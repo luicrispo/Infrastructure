@@ -24,11 +24,11 @@ $hash[$kvp.Name] = $kvp.Value
 
 }
 
-$hash['BEDatabase'] = $connetctionstring
+$appSettingList.Add($hash['BEDatabase'], $connetctionstring)
 
 $hash
 
 
-Set-AzureRMWebApp -ResourceGroupName $myResourceGroup -Name $mySite -ConnectionStrings $hash
+Set-AzureRMWebApp -ResourceGroupName $myResourceGroup -Name $mySite -ConnectionStrings $appSettingList
 
 Write-Host "Done!"
