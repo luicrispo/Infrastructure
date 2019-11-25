@@ -10,6 +10,7 @@ $myAdminPassword = $env:sqladminpassword
 
 $connetctionstring = "Server=tcp:" + $myDb + ".database.windows.net,1433;Initial Catalog=RealWorld;Persist Security Info=False;User ID=" + $myDbAdmin + ";Password=" + $myAdminPassword + ";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 
+Write-Host $connetctionstring
 
 $webApp = Get-AzureRMWebApp -ResourceGroupName $myResourceGroup -Name $mySite
 
@@ -24,6 +25,8 @@ $hash[$kvp.Name] = $kvp.Value
 }
 
 $hash['BEDatabase'] = $connetctionstring
+
+$hash
 
 
 Set-AzureRMWebApp -ResourceGroupName $myResourceGroup -Name $mySite -ConnectionStrings $hash
