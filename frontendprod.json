@@ -9,10 +9,6 @@
         "serverfarms_RealWorldFEplan_name": {
             "defaultValue": "RealWorldFEplan",
             "type": "String"
-        },
-        "components_RealWorldFrontEnd_name": {
-            "defaultValue": "RealWorldFrontEnd",
-            "type": "String"
         }
     },
     "variables": {},
