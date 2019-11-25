@@ -14,21 +14,10 @@ Write-Host $connetctionstring
 
 $webApp = Get-AzureRMWebApp -ResourceGroupName $myResourceGroup -Name $mySite
 
-$appSettingList = $webApp.SiteConfig.ConnectionStrings
 
-$hash = @{}
+$test= @{"Type"="Custom"; "Value" = $connetctionstring} 
+$Conn=@{"DbConnectionString"=$test }
 
-ForEach ($kvp in $appSettingList) {
-
-$hash[$kvp.Name] = $kvp.Value
-
-}
-
-$appSettingList.Add($hash['BEDatabase'], $connetctionstring)
-
-$hash
-
-
-Set-AzureRMWebApp -ResourceGroupName $myResourceGroup -Name $mySite -ConnectionStrings $appSettingList
+Set-AzureRMWebApp -ResourceGroupName $myResourceGroup -Name $mySite -ConnectionStrings $Conn
 
 Write-Host "Done!"
