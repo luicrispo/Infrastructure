@@ -1,4 +1,4 @@
-﻿$mResourceGroup = $env:ResourceGroup
+﻿$myResourceGroup = $env:ResourceGroup
 
 $mySite = $env:backendname
 
