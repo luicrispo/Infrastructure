@@ -22,8 +22,9 @@
       "type": "String"
     },
     "adminPassword": {
-      "type": "securestring"      
+      "type": "securestring"
     }
+  }
     "variables": {},
     "resources": [
       {
