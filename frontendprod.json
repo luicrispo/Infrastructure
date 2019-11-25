@@ -18,9 +18,6 @@
             "apiVersion": "2018-11-01",
             "name": "[parameters('sites_RealWorldFE_name')]",
             "location": "East US",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_RealWorldFEplan_name'))]"
-            ],
             "kind": "app",
             "properties": {
                 "enabled": true,
