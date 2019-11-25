@@ -44,10 +44,11 @@
             "name": "[parameters('servers_realworldbe_name')]",
             "location": "eastus",
             "kind": "v12.0",
-            "properties": {
-                "administratorLogin": "realworldadmin",
-                "version": "12.0"
-            }
+          "properties": {
+            "administratorLogin": "realworldadmin",
+            "administratorLoginPassword": "[parameters('adminPassword')]",
+            "version": "12.0"
+          }
         },
         {
             "type": "Microsoft.Web/serverfarms",
@@ -351,21 +352,6 @@
             }
         },
         {
-            "type": "Microsoft.Sql/servers/vulnerabilityAssessments",
-            "apiVersion": "2018-06-01-preview",
-            "name": "[concat(parameters('servers_realworldbe_name'), '/Default')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_realworldbe_name'))]"
-            ],
-            "properties": {
-                "recurringScans": {
-                    "isEnabled": false,
-                    "emailSubscriptionAdmins": true
-                },
-                "storageContainerPath": "[parameters('vulnerabilityAssessments_Default_storageContainerPath')]"
-            }
-        },
-        {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
             "name": "[parameters('sites_RealWorldBEsite_name')]",
@@ -512,42 +498,6 @@
                 "reservedInstanceCount": 0,
                 "fileChangeAuditEnabled": false,
                 "functionsRuntimeScaleMonitoringEnabled": false
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('sites_RealWorldBEsite_name'), '/171574450381844')]",
-            "location": "East US",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_RealWorldBEsite_name'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author": "Luigi Crispo",
-                "deployer": "VSTS",
-                "message": "{\"type\":\"Deployment\",\"commitId\":\"bd57cd315b843c3859d6383c4d429e6b4933ff53\",\"buildId\":\"59\",\"releaseId\":\"17\",\"buildNumber\":\"20191122.3\",\"releaseName\":\"Release-9\",\"repoProvider\":\"GitHub\",\"repoName\":\"luicrispo/dev-adventures-realworld\",\"collectionUrl\":\"https://lucrispo.visualstudio.com/\",\"teamProject\":\"d77ac5ad-1b2b-4159-9f6c-986fd520227c\",\"buildProjectUrl\":\"https://lucrispo.visualstudio.com/d77ac5ad-1b2b-4159-9f6c-986fd520227c\",\"repositoryUrl\":\"\",\"branch\":\"master\",\"teamProjectName\":\"todobien\",\"slotName\":\"production\"}",
-                "start_time": "2019-11-22T19:19:42.0614973Z",
-                "end_time": "2019-11-22T19:19:42.0614973Z",
-                "active": false
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('sites_RealWorldBEsite_name'), '/181574512791943')]",
-            "location": "East US",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_RealWorldBEsite_name'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author": "Luigi Crispo",
-                "deployer": "VSTS",
-                "message": "{\"type\":\"Deployment\",\"commitId\":\"b54ef365f6eb5447ed9589437492029bf754bc00\",\"buildId\":\"62\",\"releaseId\":\"18\",\"buildNumber\":\"20191123.1\",\"releaseName\":\"Release-10\",\"repoProvider\":\"GitHub\",\"repoName\":\"luicrispo/dev-adventures-realworld\",\"collectionUrl\":\"https://lucrispo.visualstudio.com/\",\"teamProject\":\"d77ac5ad-1b2b-4159-9f6c-986fd520227c\",\"buildProjectUrl\":\"https://lucrispo.visualstudio.com/d77ac5ad-1b2b-4159-9f6c-986fd520227c\",\"repositoryUrl\":\"\",\"branch\":\"master\",\"teamProjectName\":\"todobien\",\"slotName\":\"production\"}",
-                "start_time": "2019-11-23T12:39:52.5107334Z",
-                "end_time": "2019-11-23T12:39:52.5107334Z",
-                "active": true
             }
         },
         {
